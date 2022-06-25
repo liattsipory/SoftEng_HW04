@@ -15,17 +15,6 @@ public class DateCalculator {
     public static boolean isFirstDay (int day, int month) {
         return (day == 1 && month == 1)
 
-
-    // Function to return the day number
-    // of the year for the given date
-/*    static int dayOfYear(int day, int month)
-    {
-        if (month <= 1)
-            return day;
-        month--;
-        dayOfYear(day + DAYS[month], month);
-    }*/
-
     public static Date addToDate(Date date, int num) { //what do I do without setters?
                                                         // date.month = month is not valid right?
         if (num == 0) return date;
@@ -43,11 +32,12 @@ public class DateCalculator {
                 }
             }
             day++;
-            Date newDate =  addToDate(date, num--); //how do i change date
+            Date date1 = Date(day, month, year);
+            Date newDate =  addToDate(date1, num--); //how do i change date
             return newDate;
         }
 
-        if (num<0) {
+        else {
             if (day == FIRST) {
                 if (month == FIRST) {
                     year--;
@@ -56,10 +46,20 @@ public class DateCalculator {
                 }
             }
             day--;
-            Date newDate =  addToDate(date, num++); //how do i change date
+            Date date2 = Date(day, month, year);
+            Date newDate =  addToDate(date2, num++); //how do i change date
             return newDate;
         }
 
-
 }
+
+// Function to return the day number
+        // of the year for the given date
+/*    static int dayOfYear(int day, int month)
+    {
+        if (month <= 1)
+            return day;
+        month--;
+        dayOfYear(day + DAYS[month], month);
+    }*/
 
