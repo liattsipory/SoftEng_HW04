@@ -12,11 +12,11 @@ public class DateCalculator {
     public static boolean isLastDay (int day, int month) {
         return (day == 31 && month == 12)
     }
-    public static boolean isFirstDay (int day, int month) {
+    public static boolean isFirstDay (int day, int month)
         return (day == 1 && month == 1)
 
-    public static Date addToDate(Date date, int num) { //what do I do without setters?
-                                                        // date.month = month is not valid right?
+    public static Date addToDate(Date date, int num) {
+
         if (num == 0) return date;
         int year = date.getYear();
         int month = date.getMonth();
@@ -33,7 +33,7 @@ public class DateCalculator {
             }
             day++;
             Date date1 = Date(day, month, year);
-            Date newDate =  addToDate(date1, num--); //how do i change date
+            Date newDate =  addToDate(date1, num--);
             return newDate;
         }
 
@@ -47,7 +47,7 @@ public class DateCalculator {
             }
             day--;
             Date date2 = Date(day, month, year);
-            Date newDate =  addToDate(date2, num++); //how do i change date
+            Date newDate =  addToDate(date2, num++);
             return newDate;
         }
 
