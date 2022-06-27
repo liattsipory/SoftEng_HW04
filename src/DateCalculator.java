@@ -4,13 +4,14 @@ public class DateCalculator {
     static final int REGULAR_YEAR = 365;
     static final int FIRST = 1;
     static final int LAST_MONTH = 12;
+    static final int LAST = 31;
     static final int[] DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public static boolean isLeapYear (int year) {
         return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
     }
     public static boolean isLastDay (int day, int month) {
-        return (day == 31 && month == LAST_MONTH);
+        return (day == LAST && month == LAST_MONTH);
     }
     public static boolean isFirstDay (int day, int month) {
         return (day == FIRST && month == FIRST); }
@@ -23,20 +24,27 @@ public class DateCalculator {
         int day = date.getDay();
         boolean isLeap = isLeapYear(year);
         if (num>0) {
-            if ((day == DAYS[month] && !isLeap) || (isLeap && day == DAYS[month])) {
+            if (isLastDay(day, month)) {
+                year++;
+                month = FIRST;
+                day = FIRST;
+            }
+            if (isLeap && month==2) {
+                    if (day == 28) day++;
+                    else if (day==29) {
+                        month++;
+                        day = FIRST;
+                    }
+                }
+
+            if (day == DAYS[month]) {
                 month++;
                 day = FIRST;
-                if (month == LAST_MONTH) {
-                    year++;
-                    month = FIRST;
                 }
-            }
             day++;
             Date date1 = new Date(day, month, year);
             return addToDate(date1, num-1);
-//            return newDate;
         }
-
         else {
             if (day == FIRST) {
                 day = DAYS[month-1];
