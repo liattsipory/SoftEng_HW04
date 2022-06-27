@@ -4,16 +4,16 @@ public class DateCalculator {
     static final int REGULAR_YEAR = 365;
     static final int FIRST = 1;
     static final int LAST_MONTH = 12;
-    static final int[] DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    static final int[] DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public static boolean isLeapYear (int year) {
-        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
     }
     public static boolean isLastDay (int day, int month) {
-        return (day == 31 && month == 12)
+        return (day == 31 && month == LAST_MONTH);
     }
-    public static boolean isFirstDay (int day, int month)
-        return (day == 1 && month == 1)
+    public static boolean isFirstDay (int day, int month) {
+        return (day == FIRST && month == FIRST); }
 
     public static Date addToDate(Date date, int num) {
 
@@ -23,22 +23,23 @@ public class DateCalculator {
         int day = date.getDay();
         boolean isLeap = isLeapYear(year);
         if (num>0) {
-            if (day == DAYS[month]) && ((!isLeap) || (isLeap && day == DAYS[month]+1) {
+            if ((day == DAYS[month] && !isLeap) || (isLeap && day == DAYS[month])) {
                 month++;
+                day = FIRST;
                 if (month == LAST_MONTH) {
                     year++;
-                    day = FIRST;
                     month = FIRST;
                 }
             }
             day++;
-            Date date1 = Date(day, month, year);
-            Date newDate =  addToDate(date1, num--);
-            return newDate;
+            Date date1 = new Date(day, month, year);
+            return addToDate(date1, num-1);
+//            return newDate;
         }
 
         else {
             if (day == FIRST) {
+                day = DAYS[month-1];
                 if (month == FIRST) {
                     year--;
                     month = LAST_MONTH;
@@ -46,11 +47,11 @@ public class DateCalculator {
                 }
             }
             day--;
-            Date date2 = Date(day, month, year);
-            Date newDate =  addToDate(date2, num++);
-            return newDate;
+            Date date2 = new Date(day, month, year);
+            return addToDate(date2, num+1);
         }
 
+}
 }
 
 // Function to return the day number
