@@ -1,6 +1,7 @@
 public class DateCalculator {
     /**
      * This class represents a date calculator.
+     * this class receives a date and a number to add or subtract (depends on the number's sign).
      * We defined constant numbers:
      * number of days in a regular year and in a leap year.
      * constant array of the number of days in each month.
