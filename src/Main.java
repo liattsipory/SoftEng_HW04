@@ -33,7 +33,7 @@ public class Main {
         }
     }
 
-    private static void testPartA2() {
+   /* private static void testPartA2() {
         System.out.println("Testing part A2...");
         BinNode<Integer> root = new BinNode<>(5);
         root.setLeft(new BinNode<>(7));
@@ -45,7 +45,7 @@ public class Main {
         System.out.println("Level with most occurrences of 6: " + LevelMostOccurrences.getLevelWithMostOccurrences(root, 6));
         System.out.println("Level with most occurrences of 2: " + LevelMostOccurrences.getLevelWithMostOccurrences(root, 2));
         System.out.println();
-    }
+    }*/
 }
 
 
