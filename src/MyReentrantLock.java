@@ -44,7 +44,6 @@ public class MyReentrantLock implements Lock {
                 this.isLocked.set(false);
             } if (this.counter > 1) this.counter--;
         }
-
     }
 
     @Override
