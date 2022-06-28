@@ -5,9 +5,9 @@ import java.util.ArrayDeque;
 public class LevelMostOccurrences {
     /**
      * returns the number of level with the most occurences of a given number.
-     * @param node - the CONTINUE BABE
-     * @param num
-     * @return
+     * @param node - BinNode<E> type, the node we count occurences on.
+     * @param num - the number we want to check in which level it appears the most.
+     * @return - the number of level of the node the given number has the most occurences.
      */
     public static int getLevelWithMostOccurrences(BinNode<Integer> node, int num) {
         final int NOT_THERE = -1;
