@@ -1,4 +1,5 @@
 import java.util.concurrent.atomic.AtomicBoolean;
+
 public class MyReentrantLock implements Lock {
     private AtomicBoolean isLocked = new AtomicBoolean(false);
     private Thread lockedThread;
@@ -12,7 +13,9 @@ public class MyReentrantLock implements Lock {
     @Override
     public void acquire() {
         if (this.counter==0 || Thread.currentThread()!=this.lockedThread) {
-            while (this.isLocked.get() && Thread.currentThread()!=this.lockedThread) {
+            //while (this.isLocked.get() && Thread.currentThread()!=this.lockedThread) {
+            while (this.isLocked.compareAndSet(false, true)
+                    && Thread.currentThread() != this.lockedThread) {
                 try {
                     Thread.sleep(11);
                 } catch (InterruptedException e) {
